@@ -5,9 +5,15 @@ void main() {
     home: IDCard(),
   ));
 }
-class IDCard extends StatelessWidget {
+class IDCard extends StatefulWidget {
   const IDCard({super.key});
 
+  @override
+  State<IDCard> createState() => _IDCardState();
+}
+
+class _IDCardState extends State<IDCard> {
+  int level = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +22,14 @@ class IDCard extends StatelessWidget {
         title: Text("Praveen ID Card"),
         centerTitle: true,
         backgroundColor: Colors.green,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            level = level+1;
+          });
+        },
+        child: Icon(Icons.add),
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -47,7 +61,6 @@ class IDCard extends StatelessWidget {
                     color: Colors.pink,
                     letterSpacing: 2.0
                 )),
-            SizedBox(height:10.0),
             Text("Senior Soft. Engineer",
               style: TextStyle(
                   color: Colors.amber,
@@ -55,6 +68,18 @@ class IDCard extends StatelessWidget {
                   fontWeight: FontWeight.bold
               ),),
             SizedBox(height: 10.0),
+            Text("Level-Up",
+                style: TextStyle(
+                    color: Colors.pink,
+                    letterSpacing: 2.0
+                )),
+            SizedBox(height: 10.0),
+            Text("$level",
+                style: TextStyle(
+                    color: Colors.yellow,
+                    letterSpacing: 2.0
+                )),
+            SizedBox(height:10.0),
             Row(
               children: [
                 Icon(
@@ -74,6 +99,7 @@ class IDCard extends StatelessWidget {
     );
   }
 }
+
 
 
 
